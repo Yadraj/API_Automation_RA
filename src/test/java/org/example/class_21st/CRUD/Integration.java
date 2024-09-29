@@ -113,7 +113,23 @@ public class Integration {
     }
     @Test
     public void test_get(){
+
+
         System.out.println(bookingId);
+
+        RequestSpecification requestSpecification = RestAssured.given();
+
+        requestSpecification.baseUri("https://restful-booker.herokuapp.com");
+        requestSpecification.basePath("/booking/"+bookingId);
+
+
+        requestSpecification.contentType(ContentType.JSON);
+
+        Response response = requestSpecification.when().get();
+
+        ValidatableResponse validatableResponse = response.then().log().all();
+
+        validatableResponse.statusCode(200);
 
     }
     @Test
@@ -121,11 +137,41 @@ public class Integration {
         System.out.println(token);
         System.out.println(bookingId);
 
+        RequestSpecification requestSpecification = RestAssured.given();
+
+        requestSpecification.baseUri("https://restful-booker.herokuapp.com");
+        requestSpecification.basePath("/booking/"+bookingId);
+        requestSpecification.cookie("token",token);
+
+
+        requestSpecification.contentType(ContentType.JSON);
+
+        Response response = requestSpecification.when().delete();
+
+        ValidatableResponse validatableResponse = response.then().log().all();
+
+        validatableResponse.statusCode(201);
+
     }
 
     @Test
     public void test_get_after_delete(){
         System.out.println(bookingId);
+
+
+        RequestSpecification requestSpecification = RestAssured.given();
+
+        requestSpecification.baseUri("https://restful-booker.herokuapp.com");
+        requestSpecification.basePath("/booking/"+bookingId);
+
+
+        requestSpecification.contentType(ContentType.JSON);
+
+        Response response = requestSpecification.when().get();
+
+        ValidatableResponse validatableResponse = response.then().log().all();
+
+        validatableResponse.statusCode(404);
 
     }
 }
