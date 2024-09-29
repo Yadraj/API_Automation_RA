@@ -13,11 +13,11 @@ public class Integration {
     Response response;
     ValidatableResponse validatableResponse;
 
-    java.lang.String token;
-    java.lang.String bookingId;
+    public java.lang.String token;
+    public java.lang.String bookingId;
 
 
-    @Test
+
     public String getToken(){
 
         java.lang.String payload = "{\n" +
@@ -81,8 +81,8 @@ public class Integration {
     @Test
     public void test_put(){
 
-        String token = getToken();
-        String bookingId=getBookingId();
+         String token = getToken();
+        String  bookingId =getBookingId();
 
         java.lang.String payload_put = "{\n" +
                 "    \"firstname\" : \"yadraj\",\n" +
@@ -99,7 +99,7 @@ public class Integration {
         RequestSpecification requestSpecification = RestAssured.given();
 
         requestSpecification.baseUri("https://restful-booker.herokuapp.com");
-        requestSpecification.basePath("/booking"+bookingId);
+        requestSpecification.basePath("/booking/"+bookingId);
         requestSpecification.body(payload_put);
         requestSpecification.cookie("token",token);
         requestSpecification.contentType(ContentType.JSON);
@@ -107,20 +107,25 @@ public class Integration {
         Response response = requestSpecification.when().put();
 
         ValidatableResponse validatableResponse = response.then().log().all();
+        System.out.println("before status");
         validatableResponse.statusCode(200);
 
     }
     @Test
     public void test_get(){
+        System.out.println(bookingId);
 
     }
     @Test
     public void test_delete(){
+        System.out.println(token);
+        System.out.println(bookingId);
 
     }
 
     @Test
     public void test_get_after_delete(){
+        System.out.println(bookingId);
 
     }
 }

@@ -4,6 +4,12 @@
     <test verbose="2" preserve-order="true" name="C:/Users/Lenovo/IdeaProjects/API_Automation_RA">
         <classes>
             <class name="org.example.class_21st.CRUD.Integration">
+                <methods>
+                    <include name="test_put"></include>
+                    <include name="test_get"></include>
+                    <include name="test_delete"></include>
+                    <include name="test_get_after_delete"></include>
+                </methods>
             </class>
         </classes>
     </test>
