@@ -1,0 +1,222 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 201326592 bytes for G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Zero Based Compressed Oops mode in which the Java heap is
+#     placed in the first 32GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 32GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_windows.cpp:3530), pid=17328, tid=13964
+#
+# JRE version:  (18.0.1.1+2) (build )
+# Java VM: OpenJDK 64-Bit Server VM (18.0.1.1+2-6, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -ea -Didea.test.cyclic.buffer.size=1048576 -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.1.4\lib\idea_rt.jar=53245:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.1.4\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 com.intellij.rt.testng.RemoteTestNGStarter -usedefaultlisteners false -socket53244 @w@C:\Users\Lenovo\AppData\Local\Temp\idea_working_dirs_testng.tmp -temp C:\Users\Lenovo\AppData\Local\Temp\idea_testng.tmp
+
+Host: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz, 8 cores, 11G,  Windows 10 , 64 bit Build 19041 (10.0.19041.3636)
+Time: Tue Oct  1 09:07:23 2024 India Standard Time elapsed time: 0.015063 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000002379fb9f700):  JavaThread "Unknown thread" [_thread_in_vm, id=13964, stack(0x00000048b6a00000,0x00000048b6b00000)]
+
+Stack: [0x00000048b6a00000,0x00000048b6b00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x69887a]
+V  [jvm.dll+0x7f38bd]
+V  [jvm.dll+0x7f51ce]
+V  [jvm.dll+0x7f5883]
+V  [jvm.dll+0x25ca3f]
+V  [jvm.dll+0x6957c9]
+V  [jvm.dll+0x68a2fa]
+V  [jvm.dll+0x321efb]
+V  [jvm.dll+0x3298d6]
+V  [jvm.dll+0x37e47e]
+V  [jvm.dll+0x37e6af]
+V  [jvm.dll+0x2f9c7a]
+V  [jvm.dll+0x2facdd]
+V  [jvm.dll+0x7c24f0]
+V  [jvm.dll+0x38b801]
+V  [jvm.dll+0x7a1203]
+V  [jvm.dll+0x40d6bf]
+V  [jvm.dll+0x40f091]
+C  [jli.dll+0x526b]
+C  [ucrtbase.dll+0x21bb2]
+C  [KERNEL32.DLL+0x17344]
+C  [ntdll.dll+0x4cc91]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ffe1ddad550, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x000002379fbfd030 WorkerThread "GC Thread#0" [stack: 0x00000048b6b00000,0x00000048b6c00000] [id=4672]
+  0x000002379fc09d00 ConcurrentGCThread "G1 Main Marker" [stack: 0x00000048b6c00000,0x00000048b6d00000] [id=8912]
+  0x000002379fc0ada0 WorkerThread "G1 Conc#0" [stack: 0x00000048b6d00000,0x00000048b6e00000] [id=2836]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffe1d5da217]
+
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x000002379fb9b590] Heap_lock - owner thread: 0x000002379fb9f700
+
+Heap address: 0x0000000741600000, size: 3050 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 0.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+ CardTable entry size: 512
+ Card Set container configuration: InlinePtr #cards 4 size 8 Array Of Cards #cards 16 size 48 Howl #buckets 8 coarsen threshold 3686 Howl Bitmap #cards 512 size 80 coarsen threshold 460 Card regions per heap region 1 cards per card region 4096
+
+Heap:
+ garbage-first heap   total 0K, used 0K [0x0000000741600000, 0x0000000800000000)
+  region size 2048K, 0 young (0K), 0 survivors (0K)
+
+[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffe1d9c0cb9]
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes loaded (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Events (1 events):
+Event: 0.009 Loaded shared library C:\Users\Lenovo\.jdks\openjdk-18.0.1.1\bin\java.dll
+
+
+Dynamic libraries:
+0x00007ff730e30000 - 0x00007ff730e3e000 	C:\Users\Lenovo\.jdks\openjdk-18.0.1.1\bin\java.exe
+0x00007ffe6a810000 - 0x00007ffe6aa08000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffe695e0000 - 0x00007ffe6969d000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffe68040000 - 0x00007ffe68336000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffe684f0000 - 0x00007ffe685f0000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffe5f060000 - 0x00007ffe5f077000 	C:\Users\Lenovo\.jdks\openjdk-18.0.1.1\bin\jli.dll
+0x00007ffe492a0000 - 0x00007ffe492ba000 	C:\Users\Lenovo\.jdks\openjdk-18.0.1.1\bin\VCRUNTIME140.dll
+0x00007ffe69b00000 - 0x00007ffe69c9f000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffe67f40000 - 0x00007ffe67f62000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffe48700000 - 0x00007ffe4899a000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.4355_none_60b8b9eb71f62e16\COMCTL32.dll
+0x00007ffe695b0000 - 0x00007ffe695db000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffe697a0000 - 0x00007ffe6983e000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffe683d0000 - 0x00007ffe684e7000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffe67fa0000 - 0x00007ffe6803d000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffe6a5f0000 - 0x00007ffe6a61f000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ffe5e450000 - 0x00007ffe5e45c000 	C:\Users\Lenovo\.jdks\openjdk-18.0.1.1\bin\vcruntime140_1.dll
+0x00007ffe47e80000 - 0x00007ffe47f0d000 	C:\Users\Lenovo\.jdks\openjdk-18.0.1.1\bin\msvcp140.dll
+0x00007ffe1d2d0000 - 0x00007ffe1dee0000 	C:\Users\Lenovo\.jdks\openjdk-18.0.1.1\bin\server\jvm.dll
+0x00007ffe69930000 - 0x00007ffe699e0000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffe69700000 - 0x00007ffe697a0000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffe69ca0000 - 0x00007ffe69dc3000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffe67f70000 - 0x00007ffe67f97000 	C:\WINDOWS\System32\bcrypt.dll
+0x00007ffe69920000 - 0x00007ffe69928000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ffe4e9d0000 - 0x00007ffe4e9d9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ffe4d150000 - 0x00007ffe4d177000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffe69540000 - 0x00007ffe695ab000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffe63890000 - 0x00007ffe6389a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffe65d50000 - 0x00007ffe65d62000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ffe5b330000 - 0x00007ffe5b33a000 	C:\Users\Lenovo\.jdks\openjdk-18.0.1.1\bin\jimage.dll
+0x00007ffe4cf00000 - 0x00007ffe4d0e4000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ffe4a500000 - 0x00007ffe4a534000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ffe68340000 - 0x00007ffe683c2000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffe540c0000 - 0x00007ffe540ce000 	C:\Users\Lenovo\.jdks\openjdk-18.0.1.1\bin\instrument.dll
+0x00007ffe42b60000 - 0x00007ffe42b85000 	C:\Users\Lenovo\.jdks\openjdk-18.0.1.1\bin\java.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Users\Lenovo\.jdks\openjdk-18.0.1.1\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.4355_none_60b8b9eb71f62e16;C:\Users\Lenovo\.jdks\openjdk-18.0.1.1\bin\server
+
+VM Arguments:
+jvm_args: -ea -Didea.test.cyclic.buffer.size=1048576 -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.1.4\lib\idea_rt.jar=53245:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.1.4\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 
+java_command: com.intellij.rt.testng.RemoteTestNGStarter -usedefaultlisteners false -socket53244 @w@C:\Users\Lenovo\AppData\Local\Temp\idea_working_dirs_testng.tmp -temp C:\Users\Lenovo\AppData\Local\Temp\idea_testng.tmp
+java_class_path (initial): C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.1.4\lib\idea_rt.jar;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.1.4\plugins\testng\lib\testng-rt.jar;C:\Users\Lenovo\IdeaProjects\API_Automation_RA\target\test-classes;C:\Users\Lenovo\IdeaProjects\API_Automation_RA\target\classes;C:\Users\Lenovo\.m2\repository\io\rest-assured\rest-assured\5.5.0\rest-assured-5.5.0.jar;C:\Users\Lenovo\.m2\repository\org\apache\groovy\groovy\4.0.22\groovy-4.0.22.jar;C:\Users\Lenovo\.m2\repository\org\apache\groovy\groovy-xml\4.0.22\groovy-xml-4.0.22.jar;C:\Users\Lenovo\.m2\repository\org\apache\httpcomponents\httpclient\4.5.13\httpclient-4.5.13.jar;C:\Users\Lenovo\.m2\repository\org\apache\httpcomponents\httpcore\4.4.13\httpcore-4.4.13.jar;C:\Users\Lenovo\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\Lenovo\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\Lenovo\.m2\repository\org\apache\httpcomponents\httpmime\4.5.13\httpmime-4.5.13.jar;C:\Users\Lenovo\.m2\repository\org\ccil\cowan\tagsoup\tagsoup\1.2.1\tagsoup-1.2.1.jar;C:\Users\Lenovo\.m2\repository\io\rest-assured\json-path\5.5.0\json-path-5.5.0.jar;C:\Users\Lenovo\.m2\repository\org\apache\groovy\groovy-json\4.0.22\groovy-json-4.0.22.jar;C:\Users\Lenovo\.m2\repository\io\rest-assured\rest-assured-common\5.5.0\rest-assured-common-5.5.0.jar;C:\Users\Lenovo\.m2\repository\io\rest-assured\xml-path\5.5.0\xml-path-5.5.0.jar;C:\Users\Lenovo\.m2\repository\org\apache\commons\commons-lang3\3.11\commons-lang3-3.11.jar;C:\Users\Lenovo\.m2\repository\org\testng\testng\7.1.0\testng-7.1.0.jar;C:\Users\Lenovo\.m2\repository\com\beust\jcommander\1.72\jcommander-1.72.jar;C:\Users\Lenovo\.m2\repository\com\google\inject\guice\4.1.0\guice-4.1.0-no_aop.jar;C:\Users\Lenovo\.m2\repository\javax\inject\javax.inject\1\javax.inject-1.jar;C:\Users\Lenovo\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;C:\Users\Lenovo\.m2\repository\com\google\guava\guava\19.0\guava-19.0.jar;C:\Users\Lenovo\.m2\repository\org\yaml\snakeyaml\1.21\snakeyaml-1.21.jar;C:\Users\Lenovo\.m2\repository\io\qameta\allure\allure-testng\2.29.0\allure-testng-2.29.0.jar;C:\Users\Lenovo\.m2\repository\io\qameta\allure\allure-java-commons\2.29.0\allure-java-commons-2.29.0.jar;C:\Users\Lenovo\.m2\repository\org\slf4j\slf4j-api\2.0.13\slf4j-api-2.0.13.jar;C:\Users\Lenovo\.m2\repository\io\qameta\allure\allure-model\2.29.0\allure-model-2.29.0.jar;C:\Users\Lenovo\.m2\repository\io\qameta\allure\allure-test-filter\2.29.0\allure-test-filter-2.29.0.jar;C:\Users\Lenovo\.m2\repository\org\assertj\assertj-core\3.26.3\assertj-core-3.26.3.jar;C:\Users\Lenovo\.m2\repository\net\bytebuddy\byte-buddy\1.14.18\byte-buddy-1.14.18.jar;C:\Users\Lenovo\.m2\repository\org\hamcrest\hamcrest\3.0\hamcrest-3.0.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 2097152                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 201326592                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 3198156800                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 2097152                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5839372                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122909434                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122909434                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 3198156800                             {manageable} {ergonomic}
+     bool UseCompressedClassPointers               = true                           {product lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags foldmultilines=false
+ #1: stderr all=off uptime,level,tags foldmultilines=false
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk-21
+CLASSPATH=C:\Program Files\Java\jdk-17\lib
+PATH=C:\Program Files\Java\jdk-21\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS.X64_193000_db_home\bin;C:\oraclexe\app\oracle\product\11.2.0\server\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Amazon\AWSCLIV2\;C:\Program Files\Git\cmd;C:\Users\Lenovo\Downloads\apache-maven-3.9.6-bin\apache-maven-3.9.6\bin;C:\Program Files\nodejs\;C:\Program Files\nodejs\node_modules;C:\strawberry\perl\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Program Files\Java\jdk-21\bin;C:\Users\Lenovo\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\PyCharm Community Edition 2022.1.3\bin;;C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Lenovo\AppData\Roaming\npm;
+USERNAME=Lenovo
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 142 Stepping 10, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 10 , 64 bit Build 19041 (10.0.19041.3636)
+OS uptime: 3 days 2:28 hours
+
+CPU: total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 142 stepping 10 microcode 0xb4, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, fma, vzeroupper, clflush, clflushopt
+
+Memory: 4k page, system-wide physical 12196M (1085M free)
+TotalPageFile size 40732M (AvailPageFile size 162M)
+current process WorkingSet (physical memory assigned to process): 10M, peak: 10M
+current process commit charge ("private bytes"): 60M, peak: 252M
+
+vm_info: OpenJDK 64-Bit Server VM (18.0.1.1+2-6) for windows-amd64 JRE (18.0.1.1+2-6), built on Apr 25 2022 21:50:56 by "mach5one" with MS VC++ 16.8 / 16.9 (VS2019)
+
+END.
